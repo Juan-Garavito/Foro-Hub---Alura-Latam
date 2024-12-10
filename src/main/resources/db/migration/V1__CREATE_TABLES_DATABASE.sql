@@ -1,0 +1,41 @@
+CREATE TABLE IF NOT EXISTS Curso(
+    id INTEGER AUTO_INCREMENT,
+    nombre TEXT NOT NULL,
+    categoria TEXT NOT NULL,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS Usuario(
+  id INTEGER AUTO_INCREMENT,
+  nombre TEXT NOT NULL,
+  correo TEXT NOT NULL,
+  contraseña TEXT NOT NULL,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS  Topico (
+  id INTEGER AUTO_INCREMENT,
+  titulo TEXT NOT NULL,
+  mensaje TEXT NOT NULL,
+  fechaCreacion DATETIME NOT NULL,
+  status TEXT NOT NULL,
+  autor INTEGER,
+  curso INTEGER,
+  PRIMARY KEY(id),
+  FOREIGN KEY(curso) REFERENCES Curso(id),
+  FOREIGN KEY(autor) REFERENCES Usuario(id)
+);
+
+
+CREATE TABLE IF NOT EXISTS Respuesta(
+  id INTEGER AUTO_INCREMENT,
+  mensaje TEXT NOT NULL,
+  fechaCreacion DATETIME NOT NULL,
+  solucion TEXT NOT NULL,
+  autor INTEGER,
+  topico INTEGER,
+  PRIMARY KEY(id),
+  FOREIGN KEY(topico) REFERENCES Topico(id),
+  FOREIGN KEY(autor) REFERENCES Usuario(id)
+);
+
