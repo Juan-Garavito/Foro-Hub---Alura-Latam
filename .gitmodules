@@ -1,0 +1,3 @@
+[submodule "forohub-frontend"]
+	path = forohub-frontend
+	url = git@github.com:Juan-Garavito/ForoHub-Frontend.git
