@@ -1,6 +1,6 @@
 # ForoHub - AluraLatam
 
-![ForoHub](assets/Screenshot from 2024-12-18 20-45-33.png)
+![ForoHub](assets/pantalla-login.png)
 
 ## Descripción
 
