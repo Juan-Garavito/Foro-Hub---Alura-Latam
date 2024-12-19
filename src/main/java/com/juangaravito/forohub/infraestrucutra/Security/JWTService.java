@@ -7,6 +7,7 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.juangaravito.forohub.dominio.DTO.Login;
+import com.juangaravito.forohub.dominio.DTO.TokenJwt;
 import com.juangaravito.forohub.dominio.model.Usuario;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class JWTService {
     @Value("${secret.key.jwt}")
     private String secret_key;
 
-    public String crearTokenJWT(Usuario usuario){
+    public TokenJwt crearTokenJWT(Usuario usuario){
         try{
             Algorithm algorithm = Algorithm.HMAC512(secret_key);
             String token = JWT.create()
@@ -32,7 +33,7 @@ public class JWTService {
                     .withClaim("id", usuario.getId())
                     .sign(algorithm);
 
-            return token;
+            return new TokenJwt(token);
         }catch (JWTCreationException exception){
             throw new RuntimeException();
         }

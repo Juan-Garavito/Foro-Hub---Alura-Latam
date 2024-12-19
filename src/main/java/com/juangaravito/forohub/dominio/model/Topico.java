@@ -7,6 +7,7 @@ import lombok.*;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "topico")
@@ -36,6 +37,8 @@ public class Topico {
     @ManyToOne
     @JoinColumn(name = "curso")
     private Curso curso;
+    @OneToMany(mappedBy = "topico")
+    List<Respuesta> respuestas;
 
     public Topico(TopicoDatosPeticion topico, Usuario autor, Curso curso) {
         this.titulo = topico.titulo();

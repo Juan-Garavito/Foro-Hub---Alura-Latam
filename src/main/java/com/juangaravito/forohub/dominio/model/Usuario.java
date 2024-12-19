@@ -29,6 +29,8 @@ public class Usuario implements UserDetails {
     private String contraseña;
     @OneToMany(mappedBy = "autor")
     private List<Topico> topicos;
+    @OneToMany(mappedBy = "autor")
+    private List<Respuesta> respuestas;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
